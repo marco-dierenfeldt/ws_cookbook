@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Cookbook WebApp for use in Workshop
+This Repository will be used in my workshop to learn basics of programming and the fun, writing apps. 
+In-App-language will be german.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
