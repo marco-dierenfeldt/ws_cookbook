@@ -1,18 +1,25 @@
 import { Component } from "react";
 import './recepie.component.css';
+import RecepieService from "../service/recepie-service";
 
 class Recepie extends Component {
     constructor() {
         super();
 
         this.state = {
-            recepie:{
-                name:"Rezeptüberschrift oder Rezeptname",
-                ingredients:['100g Zucker','5g Salz','400g Mehl','2  Eier'],
-                process:'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.'
+            recepie: {
+                name: '',
+                ingredients: [],
+                process: ''
             }
         }
     }
+
+    componentDidMount = () => {
+        var recepie = RecepieService.getRecepie();
+        this.setState({recepie});
+    }
+
     render = () => {
         return (
             <div className="recepie">
