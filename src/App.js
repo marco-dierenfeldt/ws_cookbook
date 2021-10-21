@@ -1,4 +1,5 @@
 import './App.css';
+import Recepie from './components/recepie.component';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       </div>
       <div className="siimple-content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+        <Recepie/>
       </div>
       <div className="siimple-footer siimple-footer--dark">
         Made with love by <strong>Marco Dierenfeldt</strong>

@@ -1,11 +1,11 @@
 import { Component } from "react";
 
-class RecepieListView extends Component {
+class Recepie extends Component {
     render = () => {
         return(
-            <div>RecepieListView Component</div>
+            <div>Recepie Component</div>
         )
     }
 }
 
-export default RecepieListView;
+export default Recepie;
