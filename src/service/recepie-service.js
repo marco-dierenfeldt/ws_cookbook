@@ -39,6 +39,11 @@ class RecepieService {
     getRecepie() {
         return this.recepieList[0];
     }
+
+    deleteRecepie = (id) => {
+        var objIndex = this.recepieList.findIndex((recepie => recepie.id === id));
+        this.recepieList.splice(objIndex,1);
+    }
 }
 
 export default new RecepieService();
