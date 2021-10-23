@@ -48,7 +48,7 @@ class RecepieList extends Component {
                             return <div className="siimple-table-row" key={recepie.id}>
                                 <div className="siimple-table-cell">{recepie.name}</div>
                                 <div className="siimple-table-cell">
-                                    <div className="siimple-btn siimple-btn--teal">anzeigen</div> &nbsp;
+                                    <div onClick={() => this.props.showRecipie(recepie.id)} className="siimple-btn siimple-btn--teal">anzeigen</div> &nbsp;
                                     <div className="siimple-btn siimple-btn--green">editieren</div> &nbsp;
                                     <div onClick={() => this.deleteRecepie(recepie.id)} className="siimple-btn siimple-btn--red">löschen</div></div>
                             </div>

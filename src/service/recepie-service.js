@@ -36,8 +36,11 @@ class RecepieService {
         return this.recepieList;
     }
 
-    getRecepie() {
-        return this.recepieList[0];
+    getRecepie(id) {
+        var result = this.recepieList.find(recepie => {
+            return recepie.id === id
+        })
+        return result;
     }
 
     deleteRecepie = (id) => {

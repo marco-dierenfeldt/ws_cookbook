@@ -16,7 +16,7 @@ class Recepie extends Component {
     }
 
     componentDidMount = () => {
-        var recepie = RecepieService.getRecepie();
+        var recepie = RecepieService.getRecepie(this.props.recepieId);
         this.setState({ recepie });
     }
 
