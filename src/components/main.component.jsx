@@ -31,7 +31,6 @@ class MainComponent extends Component {
         return (<div>
             <div onClick={this.showListView} className="siimple-btn siimple-btn--primary">ListView</div>&nbsp;
             <div onClick={this.showSingle} className="siimple-btn siimple-btn--teal">SingleView</div>
-
             {content}
         </div>)
     }
