@@ -3,8 +3,8 @@ import './recepie.component.css';
 import RecepieService from "../service/recepie-service";
 
 class Recepie extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             recepie: {
@@ -17,7 +17,7 @@ class Recepie extends Component {
 
     componentDidMount = () => {
         var recepie = RecepieService.getRecepie();
-        this.setState({recepie});
+        this.setState({ recepie });
     }
 
     render = () => {
@@ -40,7 +40,8 @@ class Recepie extends Component {
                     <div>
                         {this.state.recepie.process}
                     </div>
-                </div>
+                </div><br/>
+                <div className="siimple-btn siimple-btn--primary" onClick={this.props.gotoList}>Zurück zurÜbersicht</div>
             </div>
         )
     }

@@ -25,7 +25,7 @@ class MainComponent extends Component {
         if (this.state.view === this.APP_STATE.LIST) {
             content = <RecepieList/>
         } else if ( this.state.view === this.APP_STATE.SINGLE) {
-            content = <Recepie/>
+            content = <Recepie gotoList={this.showListView}/>
         }
         return(<div>
             <div onClick={this.showListView} className="siimple-btn siimple-btn--primary">ListView</div>&nbsp;
