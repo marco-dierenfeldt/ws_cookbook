@@ -29,11 +29,11 @@ class MainComponent extends Component {
     render() {
         var content = this.APP_STATE.LIST;
         if (this.state.view === this.APP_STATE.LIST) {
-            content = <RecepieList showRecipie={this.showSingle} />
+            content = <RecepieList showRecipie={this.showSingle} editRecepie={this.editRecepie}/>
         } else if (this.state.view === this.APP_STATE.SINGLE) {
             content = <Recepie gotoList={this.showListView} recepieId={this.state.recepieId} />
         } else if (this.state.view === this.APP_STATE.EDIT) {
-            content = <RecepieEdit/>
+            content = <RecepieEdit gotoList={this.showListView} recepieId={this.state.recepieId} />
         }
 
         return (<div>
