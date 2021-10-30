@@ -51,6 +51,10 @@ class RecepieService {
 
     saveRecepie(recepie) {
         console.log("saveRecepie");
+        if(recepie.id <0) {
+            recepie.id = this.recepieList.length +1;
+            this.recepieList.push(recepie);
+        }
     }
 
     deleteRecepie = (id) => {

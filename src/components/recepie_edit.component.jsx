@@ -9,7 +9,7 @@ class RecepieEdit extends Component {
 
         this.state = {
             recepie: {
-                id: 0,
+                id: -1,
                 name: "",
                 ingredientsTxt: '',
                 process: ''
@@ -26,7 +26,7 @@ class RecepieEdit extends Component {
                 ingredientsTxt: this.state.recepie.ingredientsTxt
             }
         });
-        console.log("name changed: " + name);
+        //console.log("name changed: " + name);
     }
 
     setIngredients(ingredientsTxt) {
@@ -38,7 +38,7 @@ class RecepieEdit extends Component {
                 id: this.state.recepie.id
             }
         });
-        console.log("ingredients changed: " + ingredientsTxt);
+        //console.log("ingredients changed: " + ingredientsTxt);
     }
 
     setProcess(process) {
@@ -50,7 +50,7 @@ class RecepieEdit extends Component {
                 id: this.state.recepie.id
             }
         });
-        console.log("process changed: " + process);
+        //console.log("process changed: " + process);
     }
 
     componentDidMount() {
@@ -65,6 +65,7 @@ class RecepieEdit extends Component {
 
     saveRecepie = () => {
         recepieService.saveRecepie(this.state.recepie);
+        this.props.gotoList();
     }
 
     getTitle() {
