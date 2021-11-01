@@ -1,4 +1,5 @@
 import './App.css';
+import Recipe from './components/recipe.component'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
         <div className="siimple-navbar-title">Mein Kochbuch</div>
       </div>
       <div className="siimple-content">
+        <Recipe/>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit...
       </div>
       <div className="siimple-footer siimple-footer--dark">
