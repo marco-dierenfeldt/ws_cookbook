@@ -1,9 +1,9 @@
-class RecepieService {
+class RecipeService {
     recepieList = [];
 
-    getAllRecepies(){
+    getAllRecipes(){
         return this.recepieList;
     }
 }
 
-export default new RecepieService();
+export default new RecipeService();
