@@ -53,6 +53,7 @@ class RecepieService {
         console.log("saveRecepie");
         if (recepie.id < 0) {
             recepie.id = this.recepieList.length + 1;
+            recepie.ingredients = recepie.ingredientsTxt.split("\n");
             this.recepieList.push(recepie);
         } else {
             var objIndex = this.recepieList.findIndex((rec => rec.id === recepie.id));
