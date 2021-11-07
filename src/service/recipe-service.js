@@ -1,5 +1,5 @@
-class RecepieService {
-    recepieList = [
+class RecipeService {
+    recipeList = [
         {
             id: 1,
             name: "Schweinekrustenbraten mit Knödeln und Sauerkraut",
@@ -32,13 +32,13 @@ class RecepieService {
         }
     ];
 
-    getAllRecepies() {
-        return this.recepieList;
+    getAllRecipes() {
+        return this.recipeList;
     }
 
-    getRecepie(id) {
-        var result = this.recepieList.find(recepie => {
-            return recepie.id === id
+    getRecipe(id) {
+        var result = this.recipeList.find(recipe => {
+            return recipe.id === id
         })
         if (result) {
             var ingredientsTxt = '';
@@ -49,22 +49,22 @@ class RecepieService {
         return result;
     }
 
-    saveRecepie(recepie) {
-        console.log("saveRecepie");
-        if (recepie.id < 0) {
-            recepie.id = this.recepieList.length + 1;
-            recepie.ingredients = recepie.ingredientsTxt.split("\n");
-            this.recepieList.push(recepie);
+    saveRecipe(recipe) {
+        console.log("saveRecipe");
+        if (recipe.id < 0) {
+            recipe.id = this.recipeList.length + 1;
+            recipe.ingredients = recipe.ingredientsTxt.split("\n");
+            this.recipeList.push(recipe);
         } else {
-            var objIndex = this.recepieList.findIndex((rec => rec.id === recepie.id));
-            this.recepieList[objIndex] = recepie;
+            var objIndex = this.recipeList.findIndex((rec => rec.id === recipe.id));
+            this.recipeList[objIndex] = recipe;
         }
     }
 
-    deleteRecepie = (id) => {
-        var objIndex = this.recepieList.findIndex((recepie => recepie.id === id));
-        this.recepieList.splice(objIndex, 1);
+    deleteRecipe = (id) => {
+        var objIndex = this.recipeList.findIndex((recipe => recipe.id === id));
+        this.recipeList.splice(objIndex, 1);
     }
 }
 
-export default new RecepieService();
+export default new RecipeService();

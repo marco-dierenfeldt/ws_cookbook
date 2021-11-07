@@ -1,7 +1,7 @@
 import { Component } from "react";
-import RecepieList from "./recepie_list.component";
-import Recepie from "./recepie.component";
-import RecepieEdit from "./recepie_edit.component";
+import RecipeList from "./recipe_list.component";
+import Recipe from "./recipe.component";
+import RecipeEdit from "./recipe_edit.component";
 
 class MainComponent extends Component {
     APP_STATE = { LIST: 1, SINGLE: 2, EDIT: 3, NEW: 4 }
@@ -10,7 +10,7 @@ class MainComponent extends Component {
 
         this.state = {
             view: this.APP_STATE.LIST,
-            recepieId: 1
+            recipeId: 1
         }
     }
 
@@ -18,33 +18,33 @@ class MainComponent extends Component {
         this.setState({ view: this.APP_STATE.LIST });
     }
 
-    showSingle = (recepieId) => {
-        this.setState({ recepieId: recepieId, view: this.APP_STATE.SINGLE });
+    showSingle = (recipeId) => {
+        this.setState({ recipeId: recipeId, view: this.APP_STATE.SINGLE });
     }
 
-    editRecepie = (recepieId) => {
-        this.setState({ recepieId, view: this.APP_STATE.EDIT });
+    editRecipe = (recipeId) => {
+        this.setState({ recipeId, view: this.APP_STATE.EDIT });
     }
     
-    newRecepie = (recepieId) => {
-        this.setState({ recepieId, view: this.APP_STATE.NEW });
+    newRecipe = (recipeId) => {
+        this.setState({ recipeId, view: this.APP_STATE.NEW });
     }
 
     render() {
         var content = this.APP_STATE.LIST;
         if (this.state.view === this.APP_STATE.LIST) {
-            content = <RecepieList showRecipie={this.showSingle} editRecepie={this.editRecepie} />
+            content = <RecipeList showRecipie={this.showSingle} editRecipe={this.editRecipe} />
         } else if (this.state.view === this.APP_STATE.SINGLE) {
-            content = <Recepie gotoList={this.showListView} recepieId={this.state.recepieId} />
+            content = <Recipe gotoList={this.showListView} recipeId={this.state.recipeId} />
         } else if (this.state.view === this.APP_STATE.EDIT) {
-            content = <RecepieEdit gotoList={this.showListView} recepieId={this.state.recepieId} />
+            content = <RecipeEdit gotoList={this.showListView} recipeId={this.state.recipeId} />
         } else if (this.state.view === this.APP_STATE.NEW) {
-            content = <RecepieEdit gotoList={this.showListView} />
+            content = <RecipeEdit gotoList={this.showListView} />
         }
 
         return (<div>
             <div onClick={this.showListView} className="siimple-btn siimple-btn--primary">ListView</div>&nbsp;
-            <div onClick={this.newRecepie} className="siimple-btn siimple-btn--teal">NEW Recipie</div>
+            <div onClick={this.newRecipe} className="siimple-btn siimple-btn--teal">NEW Recipie</div>
             {content}
 
         </div>)

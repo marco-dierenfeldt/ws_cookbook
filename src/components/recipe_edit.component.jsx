@@ -1,14 +1,14 @@
 import { Component } from "react";
-import recepieService from "../service/recepie-service";
+import recipeService from "../service/recipe-service";
 
-class RecepieEdit extends Component {
+class RecipeEdit extends Component {
     ViewState = { EDIT: 1, NEW: 2 };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            recepie: {
+            recipe: {
                 id: -1,
                 name: "",
                 ingredientsTxt: '',
@@ -19,11 +19,11 @@ class RecepieEdit extends Component {
 
     setName(name) {
         this.setState({
-            recepie: {
-                id: this.state.recepie.id,
+            recipe: {
+                id: this.state.recipe.id,
                 name,
-                process: this.state.recepie.process,
-                ingredientsTxt: this.state.recepie.ingredientsTxt
+                process: this.state.recipe.process,
+                ingredientsTxt: this.state.recipe.ingredientsTxt
             }
         });
         //console.log("name changed: " + name);
@@ -31,11 +31,11 @@ class RecepieEdit extends Component {
 
     setIngredients(ingredientsTxt) {
         this.setState({
-            recepie: {
+            recipe: {
                 ingredientsTxt,
-                name: this.state.recepie.name,
-                process: this.state.recepie.process,
-                id: this.state.recepie.id
+                name: this.state.recipe.name,
+                process: this.state.recipe.process,
+                id: this.state.recipe.id
             }
         });
         //console.log("ingredients changed: " + ingredientsTxt);
@@ -43,28 +43,28 @@ class RecepieEdit extends Component {
 
     setProcess(process) {
         this.setState({
-            recepie: {
+            recipe: {
                 process,
-                name: this.state.recepie.name,
-                ingredientsTxt: this.state.recepie.ingredientsTxt,
-                id: this.state.recepie.id
+                name: this.state.recipe.name,
+                ingredientsTxt: this.state.recipe.ingredientsTxt,
+                id: this.state.recipe.id
             }
         });
         //console.log("process changed: " + process);
     }
 
     componentDidMount() {
-        var recepie = recepieService.getRecepie(this.props.recepieId);
-        if (recepie) {
-            this.setState({ recepie, view_state: this.ViewState.EDIT });
+        var recipe = recipeService.getRecipe(this.props.recipeId);
+        if (recipe) {
+            this.setState({ recipe, view_state: this.ViewState.EDIT });
         } else {
             this.setState({ view_state: this.ViewState.NEW })
         }
 
     }
 
-    saveRecepie = () => {
-        recepieService.saveRecepie(this.state.recepie);
+    saveRecipe = () => {
+        recipeService.saveRecipe(this.state.recipe);
         this.props.gotoList();
     }
 
@@ -86,25 +86,25 @@ class RecepieEdit extends Component {
                 <input
                     type="text"
                     className="siimple-input siimple-input--fluid"
-                    value={this.state.recepie.name}
+                    value={this.state.recipe.name}
                     onChange={e => this.setName(e.target.value)}>
                 </input>
                 <label className="siimple-label">Zutaten: </label><br />
                 <textarea
                     className="siimple-textarea"
-                    value={this.state.recepie.ingredientsTxt} rows="5"
+                    value={this.state.recipe.ingredientsTxt} rows="5"
                     onChange={e => this.setIngredients(e.target.value)}></textarea><br />
                 <label className="siimple-label">Zubereitung: </label><br />
                 <textarea
                     className="siimple-textarea siimple-textarea--fluid"
-                    value={this.state.recepie.process} rows="8" cols="200"
+                    value={this.state.recipe.process} rows="8" cols="200"
                     onChange={e => this.setProcess(e.target.value)}></textarea>
                 <br />
                 <div className="siimple-btn siimple-btn--red" onClick={this.props.gotoList}>Abbrechen</div>&nbsp;
-                <div className="siimple-btn siimple-btn--primary" onClick={this.saveRecepie}>Speichern</div>
+                <div className="siimple-btn siimple-btn--primary" onClick={this.saveRecipe}>Speichern</div>
             </div>
         )
     }
 }
 
-export default RecepieEdit;
+export default RecipeEdit;
