@@ -1,6 +1,6 @@
 import { Component } from "react";
-import RecepieList from "./recepie_list.component";
-import Recepie from "./recepie.component";
+import RecipeList from "./recipe_list.component";
+import Recipe from "./recipe.component";
 
 class MainComponent extends Component {
     APP_STATE = { LIST: 1, SINGLE: 2 }
@@ -9,7 +9,7 @@ class MainComponent extends Component {
 
         this.state = {
             view: this.APP_STATE.LIST,
-            recepieId: 1
+            recipeId: 1
         }
     }
 
@@ -17,16 +17,16 @@ class MainComponent extends Component {
         this.setState({ view: this.APP_STATE.LIST })
     }
 
-    showSingle = (recepieId) => {
-        this.setState({ recepieId: recepieId, view: this.APP_STATE.SINGLE})
+    showSingle = (recipeId) => {
+        this.setState({ recipeId: recipeId, view: this.APP_STATE.SINGLE})
     }
 
     render() {
         var content = this.APP_STATE.LIST;
         if (this.state.view === this.APP_STATE.LIST) {
-            content = <RecepieList showRecipie={this.showSingle} />
+            content = <RecipeList showRecipie={this.showSingle} />
         } else if (this.state.view === this.APP_STATE.SINGLE) {
-            content = <Recepie gotoList={this.showListView} recepieId={this.state.recepieId} />
+            content = <Recipe gotoList={this.showListView} recipeId={this.state.recipeId} />
         }
         return (<div>
             <div onClick={this.showListView} className="siimple-btn siimple-btn--primary">ListView</div>&nbsp;

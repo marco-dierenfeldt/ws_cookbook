@@ -1,5 +1,5 @@
-class RecepieService {
-    recepieList = [
+class RecipeService {
+    recipeList = [
         {
             id:1,
             name:"Schweinekrustenbraten mit Knödeln und Sauerkraut",
@@ -32,21 +32,21 @@ class RecepieService {
         }
     ];
 
-    getAllRecepies() {
-        return this.recepieList;
+    getAllRecipes() {
+        return this.recipeList;
     }
 
-    getRecepie(id) {
-        var result = this.recepieList.find(recepie => {
-            return recepie.id === id
+    getRecipe(id) {
+        var result = this.recipeList.find(recipe => {
+            return recipe.id === id
         })
         return result;
     }
 
-    deleteRecepie = (id) => {
-        var objIndex = this.recepieList.findIndex((recepie => recepie.id === id));
-        this.recepieList.splice(objIndex,1);
+    deleteRecipe = (id) => {
+        var objIndex = this.recipeList.findIndex((recipe => recipe.id === id));
+        this.recipeList.splice(objIndex,1);
     }
 }
 
-export default new RecepieService();
+export default new RecipeService();

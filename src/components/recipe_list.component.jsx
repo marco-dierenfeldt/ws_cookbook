@@ -1,12 +1,12 @@
 import { Component } from "react";
-import recepieService from "../service/recepie-service";
+import recipeService from "../service/recipe-service";
 
-class RecepieList extends Component {
+class RecipeList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            recepieList: [
+            recipeList: [
                 { id: 1, name: 'test1' },
                 { id: 2, name: 'test2' },
                 { id: 3, name: 'test3' },
@@ -20,15 +20,15 @@ class RecepieList extends Component {
         this.updateList();
     }
 
-    deleteRecepie = (id) => {
-        //console.log("RecepieList.deleteRecepie(" + id + ")")
-        recepieService.deleteRecepie(id);
+    deleteRecipe = (id) => {
+        //console.log("RecipeList.deleteRecipe(" + id + ")")
+        recipeService.deleteRecipe(id);
         this.updateList();
     }
 
     updateList() {
-        var recepieList = recepieService.getAllRecepies();
-        this.setState({ recepieList });
+        var recipeList = recipeService.getAllRecipes();
+        this.setState({ recipeList });
     }
 
     render() {
@@ -44,13 +44,13 @@ class RecepieList extends Component {
                     </div>
                     <div className="siimple-table-body">
 
-                        {this.state.recepieList.map((recepie) => {
-                            return <div className="siimple-table-row" key={recepie.id}>
-                                <div className="siimple-table-cell">{recepie.name}</div>
+                        {this.state.recipeList.map((recipe) => {
+                            return <div className="siimple-table-row" key={recipe.id}>
+                                <div className="siimple-table-cell">{recipe.name}</div>
                                 <div className="siimple-table-cell">
-                                    <div onClick={() => this.props.showRecipie(recepie.id)} className="siimple-btn siimple-btn--teal">anzeigen</div> &nbsp;
+                                    <div onClick={() => this.props.showRecipie(recipe.id)} className="siimple-btn siimple-btn--teal">anzeigen</div> &nbsp;
                                     <div className="siimple-btn siimple-btn--green">editieren</div> &nbsp;
-                                    <div onClick={() => this.deleteRecepie(recepie.id)} className="siimple-btn siimple-btn--red">löschen</div></div>
+                                    <div onClick={() => this.deleteRecipe(recipe.id)} className="siimple-btn siimple-btn--red">löschen</div></div>
                             </div>
                         })}
                     </div>
@@ -60,4 +60,4 @@ class RecepieList extends Component {
     }
 }
 
-export default RecepieList;
+export default RecipeList;
