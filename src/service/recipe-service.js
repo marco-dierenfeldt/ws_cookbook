@@ -1,5 +1,5 @@
-class RecepieService {
-    recepieList = [
+class RecipeService {
+    recipeList = [
         {
             name:"Rezeptüberschrift oder Rezeptname",
             ingredients:['100g Zucker','5g Salz','400g Mehl','2  Eier'],
@@ -7,13 +7,13 @@ class RecepieService {
         }
     ];
 
-    getAllRecepies() {
-        return this.recepieList;
+    getAllRecipes() {
+        return this.recipeList;
     }
 
-    getRecepie() {
-        return this.recepieList[0];
+    getRecipe() {
+        return this.recipeList[0];
     }
 }
 
-export default new RecepieService();
+export default new RecipeService();
