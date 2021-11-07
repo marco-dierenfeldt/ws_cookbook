@@ -1,5 +1,5 @@
-class RecepieService {
-    recepieList = [
+class RecipeService {
+    recipeList = [
         {
             id:1,
             name:"Schweinekrustenbraten mit Knödeln und Sauerkraut",
@@ -32,13 +32,13 @@ class RecepieService {
         }
     ];
 
-    getAllRecepies() {
-        return this.recepieList;
+    getAllRecipes() {
+        return this.recipeList;
     }
 
-    getRecepie() {
-        return this.recepieList[0];
+    getRecipe() {
+        return this.recipeList[0];
     }
 }
 
-export default new RecepieService();
+export default new RecipeService();

@@ -1,6 +1,6 @@
 import { Component } from "react";
-import RecepieList from "./recepie_list.component";
-import Recepie from "./recepie.component";
+import RecipeList from "./recipe_list.component";
+import Recipe from "./recipe.component";
 
 class MainComponent extends Component {
      APP_STATE = {LIST:1,SINGLE:2}
@@ -23,9 +23,9 @@ class MainComponent extends Component {
     render() {
         var content = this.APP_STATE.LIST;
         if (this.state.view === this.APP_STATE.LIST) {
-            content = <RecepieList/>
+            content = <RecipeList/>
         } else if ( this.state.view === this.APP_STATE.SINGLE) {
-            content = <Recepie/>
+            content = <Recipe/>
         }
         return(<div>
             <div onClick={this.showListView} className="siimple-btn siimple-btn--primary">ListView</div>&nbsp;
