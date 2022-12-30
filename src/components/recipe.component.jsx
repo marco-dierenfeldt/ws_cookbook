@@ -21,7 +21,7 @@ class Recipe extends Component {
 
     render = () => {
         return (
-            <div class="card">
+            <div className="card">
                 <div className="card-header">
                     <div className="card-header-title"><h2>{this.state.recipe.name}</h2></div>
                 </div>

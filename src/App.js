@@ -1,5 +1,6 @@
 import 'bulma/css/bulma.css';
 import './App.css';
+import Recipe from './components/recipe.component';
 
 function App() {
   return (
