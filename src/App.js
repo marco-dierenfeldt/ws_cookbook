@@ -1,6 +1,6 @@
 import 'bulma/css/bulma.css';
 import './App.css';
-import RecipeList from './components/recipe_list.component';
+import MainComponent from './components/main.component';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         </div>
         <div className='hero-body'>
           <section id="main_content" className='section'>
-            <RecipeList/>
+            <MainComponent/>
           </section>
         </div>
         <div className='hero-foot'>

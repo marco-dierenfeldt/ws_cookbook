@@ -34,7 +34,7 @@ class RecipeList extends Component {
                     </thead>
                     <tbody>
                         {this.state.recipeList.map((recipe) => {
-                            return <tr>
+                            return <tr key={recipe.id}>
                                 <td>{recipe.name}</td>
                                 <td>anzeigen | editieren | löschen</td>
                             </tr>
