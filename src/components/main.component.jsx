@@ -8,7 +8,8 @@ class MainComponent extends Component {
         super();
         
         this.state = {
-            view: this.APP_STATE.LIST
+            view: this.APP_STATE.LIST,
+            recipeId: 1
         }
     }
 
@@ -16,20 +17,20 @@ class MainComponent extends Component {
         this.setState({view: this.APP_STATE.LIST})
     }
 
-    showSingle = () => {
-        this.setState({view: this.APP_STATE.SINGLE})
+    showSingle = (recipeId) => {
+        this.setState({recipeId:recipeId, view: this.APP_STATE.SINGLE})
     }
 
     render() {
         var content = this.APP_STATE.LIST;
         if (this.state.view === this.APP_STATE.LIST) {
-            content = <RecipeList/>
+            content = <RecipeList showRecipe={this.showSingle}/>
         } else if ( this.state.view === this.APP_STATE.SINGLE) {
-            content = <Recipe/>
+            content = <Recipe recipeId={this.state.recipeId}/>
         }
         return(<div>
             <button onClick={this.showListView} className="button">ListView</button>&nbsp;
-            <button onClick={this.showSingle} className="button">SingleView</button>
+            <button onClick={() => this.showSingle(1)} className="button">SingleView</button>
             
             {content}
             </div>)

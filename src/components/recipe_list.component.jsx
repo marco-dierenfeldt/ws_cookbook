@@ -2,8 +2,8 @@ import { Component } from "react";
 import RecipeService from "../service/recepie-service";
 
 class RecipeList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             recipeList: [
@@ -17,8 +17,18 @@ class RecipeList extends Component {
     }
 
     componentDidMount = () => {
+        this.updateList();
+    }
+
+    deleteRecipe = (id) => {
+        //console.log("RecipeList.deleteRecipe(" + id + ")")
+        RecipeService.deleteRecipe(id);
+        this.updateList();
+    }
+
+    updateList() {
         var recipeList = RecipeService.getAllRecipes();
-        this.setState({recipeList});
+        this.setState({ recipeList });
     }
 
     render() {
@@ -36,7 +46,13 @@ class RecipeList extends Component {
                         {this.state.recipeList.map((recipe) => {
                             return <tr key={recipe.id}>
                                 <td>{recipe.name}</td>
-                                <td>anzeigen | editieren | löschen</td>
+                                <td>
+                                    <div className="buttons">
+                                        <button onClick={() => this.props.showRecipe(recipe.id)} className="button is-info is-light">anzeigen</button>
+                                        <button className="button is-success is-light">editieren</button>
+                                        <button onClick={()=> this.deleteRecipe(recipe.id)} className="button is-danger is-light">löschen</button>
+                                    </div>
+                                </td>
                             </tr>
                         })}
                     </tbody>

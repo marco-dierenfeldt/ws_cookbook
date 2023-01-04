@@ -36,8 +36,16 @@ class RecipeService {
         return this.recipeList;
     }
 
-    getRecipe() {
-        return this.recipeList[0];
+    getRecipe(id) {
+        var result = this.recipeList.find(recipe => {
+            return recipe.id === id
+        })
+        return result;
+    }
+
+    deleteRecipe = (id) => {
+        var objIndex = this.recipeList.findIndex((recipe => recipe.id === id));
+        this.recipeList.splice(objIndex,1);
     }
 }
 

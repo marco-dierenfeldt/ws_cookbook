@@ -2,11 +2,12 @@ import { Component } from "react";
 import RecipeService from "../service/recepie-service";
 
 class Recipe extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             recipe: {
+                id:0,
                 name: '',
                 ingredients: [],
                 process: ''
@@ -15,7 +16,7 @@ class Recipe extends Component {
     }
 
     componentDidMount = () => {
-        var recipe = RecipeService.getRecipe();
+        var recipe = RecipeService.getRecipe(this.props.recipeId);
         this.setState({recipe});
     }
 
