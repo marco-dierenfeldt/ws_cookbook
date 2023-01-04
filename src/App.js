@@ -17,7 +17,7 @@ function App() {
         </div>
         <div className='hero-body'>
           <section id="main_content" className='section'>
-            <p>Lorem ipsum dolor sit amet...</p>
+            <Recipe/>
           </section>
         </div>
         <div className='hero-foot'>
