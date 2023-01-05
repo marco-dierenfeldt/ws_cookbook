@@ -1,5 +1,5 @@
 import { Component } from "react";
-import RecipeService from "../service/recepie-service";
+import RecipeService from "../service/recipe-service";
 
 class Recipe extends Component {
     constructor(props) {

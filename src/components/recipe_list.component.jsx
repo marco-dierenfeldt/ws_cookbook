@@ -1,5 +1,5 @@
 import { Component } from "react";
-import RecipeService from "../service/recepie-service";
+import RecipeService from "../service/recipe-service";
 
 class RecipeList extends Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class RecipeList extends Component {
                                 <td>
                                     <div className="buttons">
                                         <button onClick={() => this.props.showRecipe(recipe.id)} className="button is-info is-light">anzeigen</button>
-                                        <button className="button is-success is-light">editieren</button>
+                                        <button onClick={() => this.props.editRecipe(recipe.id)} className="button is-success is-light">editieren</button>
                                         <button onClick={()=> this.deleteRecipe(recipe.id)} className="button is-danger is-light">löschen</button>
                                     </div>
                                 </td>
