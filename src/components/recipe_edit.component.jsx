@@ -8,13 +8,15 @@ class RecipeEdit extends Component {
         super(props);
 
         this.state = {
+            newIngredient: '',
             recipe: {
                 id: -1,
                 name: "",
-                ingredientsTxt: '',
+                ingredients: [],
                 process: ''
             }
         }
+        this.addNewIngredient = this.addNewIngredient.bind(this);
     }
 
     setName(name) {
@@ -22,6 +24,7 @@ class RecipeEdit extends Component {
             recipe: {
                 id: this.state.recipe.id,
                 name,
+                ingredients: this.state.recipe.ingredients,
                 process: this.state.recipe.process,
                 ingredientsTxt: this.state.recipe.ingredientsTxt
             }
@@ -29,16 +32,38 @@ class RecipeEdit extends Component {
         //console.log("name changed: " + name);
     }
 
-    setIngredients(ingredientsTxt) {
+    deleteIngredient(ingredient) {
+        let idx = this.state.recipe.ingredients.findIndex(tmp => tmp === ingredient);
         this.setState({
-            recipe: {
-                ingredientsTxt,
+            resipe: {
+                ingredients: this.state.recipe.ingredients.splice(idx, 1),
                 name: this.state.recipe.name,
                 process: this.state.recipe.process,
                 id: this.state.recipe.id
             }
         });
-        //console.log("ingredients changed: " + ingredientsTxt);
+    }
+
+    addNewIngredient() {
+        let ingredients = JSON.parse(JSON.stringify(this.state.recipe.ingredients));
+        ingredients.push(this.state.newIngredient);
+
+        this.setState({
+            recipe: {
+                ingredients: ingredients,
+                name: this.state.recipe.name,
+                process: this.state.recipe.process,
+                id: this.state.recipe.id
+            },
+            newIngredient: ''
+            
+        });
+    }
+
+    setNewIngredient(ingredient) {
+        this.setState({
+            newIngredient: ingredient
+        });
     }
 
     setProcess(process) {
@@ -46,7 +71,7 @@ class RecipeEdit extends Component {
             recipe: {
                 process,
                 name: this.state.recipe.name,
-                ingredientsTxt: this.state.recipe.ingredientsTxt,
+                ingredients: this.state.recipe.ingredients,
                 id: this.state.recipe.id
             }
         });
@@ -60,6 +85,7 @@ class RecipeEdit extends Component {
         } else {
             this.setState({ view_state: this.ViewState.NEW })
         }
+        //console.log(recipe);
     }
 
     saveRecipe = () => {
@@ -80,7 +106,7 @@ class RecipeEdit extends Component {
 
         return (
             <div className="columns">
-                <div className="content column is-half">
+                <div className="content column is-three-quarter">
                     <h4 className="h3">{title}</h4>
                     <div className="field">
                         <label className="label">Rezept Titel</label>
@@ -91,18 +117,34 @@ class RecipeEdit extends Component {
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label">Zutaten</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="Textarea"
-                                value={this.state.recipe.ingredientsTxt} rows="5"
-                                onChange={e => this.setIngredients(e.target.value)}></textarea>
+                    <div className="field">
+                        <label className="label">Zutaten</label>
+                        <div className="control">
+                            <div className="tags">
+                                {this.state.recipe.ingredients.map((ingredient) => {
+                                    return <span class="tag has-background-info-light" key={ingredient}>
+                                        {ingredient}
+                                        <button onClick={() => this.deleteIngredient(ingredient)} class="delete is-small"></button>
+                                    </span>
+                                })}
+                            </div>
+                            <div className="field has-addons">
+                                <div className="control is-expanded">
+                                    <input type="text" className="input" placeholder="Neue Zutat"
+                                        value={this.state.newIngredient}
+                                        onChange={e => this.setNewIngredient(e.target.value)}></input>
+                                </div>
+                                <div className="control">
+                                    <button className="button is-primary"
+                                    onClick={this.addNewIngredient}>+</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Zubereitung</label>
-                        <div class="control">
-                            <textarea class="textarea" placeholder="Textarea"
+                    <div className="field">
+                        <label className="label">Zubereitung</label>
+                        <div className="control">
+                            <textarea className="textarea" placeholder="Textarea"
                                 value={this.state.recipe.process} rows="8" cols="200"
                                 onChange={e => this.setProcess(e.target.value)}></textarea>
                         </div>

@@ -33,7 +33,7 @@ class MainComponent extends Component {
     render() {
         var content = this.APP_STATE.LIST;
         if (this.state.view === this.APP_STATE.LIST) {
-            content = <RecipeList showRecipie={this.showSingle} editRecipe={this.editRecipe} />
+            content = <RecipeList showRecipe={this.showSingle} editRecipe={this.editRecipe} />
         } else if (this.state.view === this.APP_STATE.SINGLE) {
             content = <Recipe gotoList={this.showListView} recipeId={this.state.recipeId} />
         } else if (this.state.view === this.APP_STATE.EDIT) {

@@ -47,6 +47,11 @@ class RecipeService {
         var objIndex = this.recipeList.findIndex((recipe => recipe.id === id));
         this.recipeList.splice(objIndex,1);
     }
+
+    saveRecipe(recipe) {
+        let idx = this.recipeList.findIndex(tmpRecepie => tmpRecepie.id === recipe.id);
+        this.recipeList[idx] = recipe;
+    }
 }
 
 export default new RecipeService();
