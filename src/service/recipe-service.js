@@ -50,7 +50,12 @@ class RecipeService {
 
     saveRecipe(recipe) {
         let idx = this.recipeList.findIndex(tmpRecepie => tmpRecepie.id === recipe.id);
-        this.recipeList[idx] = recipe;
+        if(idx === -1) {
+            recipe.id = this.recipeList.length +1;
+            this.recipeList.push(recipe);
+        } else {
+            this.recipeList[idx] = recipe;
+        }
     }
 }
 
